@@ -28,7 +28,6 @@ AFRAME.registerComponent('soundhandler', {
     </script>
 </head>
 <body>
-<body>
     <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;';>
         <a-assets>
              <audio id="sound" src="silent-universe.mp3" preload="auto"></audio>
@@ -39,8 +38,8 @@ AFRAME.registerComponent('soundhandler', {
                 <a-sound src="silent-universe.mp3" autoplay="true" position="0 0 0"></a-sound>
             </a-entity>
         </a-marker>More actions
-         <a-entity sound="src: #sound" autoplay="false"></a-entity>
-         <a-entity camera></a-entity>
- </a-scene>
+            <a-entity sound="src: #sound" autoplay="false"></a-entity>
+            <a-entity camera></a-entity>
+     </a-scene>
 </body>
 </html>
