@@ -1,46 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>AR TATA SURYA</title>
-    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tata Surya AR.js - Rivale Belano - 23201253</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <script>
-AFRAME.registerComponent('soundhandler', {
-            init: function () {
-                this.soundEl = document.querySelector('[sound]');
-                this.marker = document.querySelector('a-marker');
-                this.visible = false;
-                },
-               tick: function () {
-    
-                if (this.marker.object3D.visible && !this.visible) {
-                    console.log("ding")
-                    this.soundEl.components. sound.stopSound(); // stop if playing
-                    this.soundEl.components. sound.playSound(); // play
-                    this.visible = true; // make sure it plays only once per visible
-                } else if (!this.marker.object3D.visible && this.visible) {
-                    // Hanya stop sound jika marker tidak terlihat dan sebelumnya terlihat
-                    this.soundEl.components.sound.stopSound();
-                    this.visible = false;
-                }
-            }
-        });
-    </script>
+    <style>
+        body { margin : 0px; overflow: hidden; }
+    </style>
 </head>
-<body>
-    <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;';>
-        <a-assets>
-             <audio id="sound" src="silent-universe.mp3" preload="auto"></audio>
-         </a-assets>
-         <a-marker preset="custom" type="pattern" url="pattern-spiral.patt">
-            <a-entity gltf-model="solar_system.glb" scale="1 1 1" position="0.5 0 0"
-                animation="property:rotation; from:0 0 0; to: 0 360 0; dur: 3000; loop:true">
-                <a-sound src="silent-universe.mp3" autoplay="true" position="0 0 0"></a-sound>
+<body style='margin : 0px; overflow: hidden;'>
+    <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false;'>
+
+        <a-marker preset="hiro">
+            <a-entity
+                gltf-model="sun.glb"
+                scale="0.06 0.06 0.06" position="0 0 0"
+                rotation="0 0 0"
+                animation="property: rotation; to: 0 360 0; loop: true; dur: 20000; easing: linear;">
             </a-entity>
-        </a-marker>More actions
-            <a-entity sound="src: #sound" autoplay="false" soundhandler></a-entity>
-            <a-entity camera></a-entity>
-     </a-scene>
+
+            <a-entity
+                id="earth-orbit-pivot"
+                position="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000; easing: linear;"> <a-entity
+                    gltf-model="earth.glb"
+                    scale="0.2 0.2 0.2" position="1.5 0 0"  rotation="0 0 0"
+                    animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 15000; easing: linear;"> </a-entity>
+            </a-entity>
+
+            <a-entity
+                id="mars-orbit-pivot"
+                position="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 9400; easing: linear;"> <a-entity
+                    gltf-model="jupiter.glb"
+                    scale="0.2 0.2 0.2" position="2.5 0 0"  rotation="0 0 0"
+                    animation__rotate="property: rotation; to: 0 360 0; loop: true; dur: 15400; easing: linear;"> </a-entity>
+            </a-entity>
+
+        </a-marker>
+
+        <a-entity camera></a-entity>
+    </a-scene>
 </body>
 </html>
